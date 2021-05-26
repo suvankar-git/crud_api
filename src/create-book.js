@@ -11,7 +11,8 @@ exports.handler = async event => {
   const { title } = JSON.parse(event.body);
   const params = {
     TableName: "books", // The name of your DynamoDB table
-    Item: { // Creating an Item with a unique id and with the passed title
+    Item: {
+      // Creating an Item with a unique id and with the passed title
       id: generateUUID(),
       title: title
     }
@@ -22,7 +23,7 @@ exports.handler = async event => {
     const response = {
       statusCode: 200
     };
-    return response; // Returning a 200 if the item has been inserted 
+    return response; // Returning a 200 if the item has been inserted
   } catch (e) {
     return {
       statusCode: 500,
